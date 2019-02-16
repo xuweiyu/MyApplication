@@ -47,8 +47,8 @@ public class BarChartView extends View {
         int widthSpecSize = MeasureSpec.getSize(widthMeasureSpec);
         int heightSpecMode = MeasureSpec.getMode(heightMeasureSpec);
         int heightSpecSize = MeasureSpec.getSize(heightMeasureSpec);
-        int width = 0;
-        int height = 0;
+        int width = widthSpecSize;
+        int height = heightSpecSize;
         int wrapContentWidth = 600;
         int wrapContentHeight = 200;
         if (widthSpecMode == MeasureSpec.AT_MOST&&heightSpecMode == MeasureSpec.AT_MOST){
