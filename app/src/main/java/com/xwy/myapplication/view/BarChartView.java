@@ -1,22 +1,38 @@
 package com.xwy.myapplication.view;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.View;
 
 import com.xwy.myapplication.R;
+import com.xwy.myapplication.utils.DisplayUtils;
 
 /**
  * Created by Administrator on 2019/2/12.
  */
 
 public class BarChartView extends View {
-    private int mBackgroundColor;
+    private int circleBackgroundColor;
     private Paint mPaint;
+
+    public int getCircleBackgroundColor() {
+        return circleBackgroundColor;
+    }
+
+    public void setCircleBackgroundColor(int circleBackgroundColor) {
+        this.circleBackgroundColor = circleBackgroundColor;
+        mPaint.setColor(circleBackgroundColor);
+        invalidate();
+    }
+
     public BarChartView(Context context) {
         super(context);
         init(context,null);
@@ -34,9 +50,9 @@ public class BarChartView extends View {
 
     private void init(Context context,AttributeSet attrs) {
         TypedArray typedArray =context.obtainStyledAttributes(attrs,R.styleable.BarChartView);
-        mBackgroundColor = typedArray.getColor(R.styleable.BarChartView_circle_background_color,0xFFFF);
+        circleBackgroundColor = typedArray.getColor(R.styleable.BarChartView_circle_background_color,0xFFFF);
         mPaint = new Paint();
-        mPaint.setColor(mBackgroundColor);
+        mPaint.setColor(circleBackgroundColor);
         typedArray.recycle();
     }
 
